@@ -1,13 +1,22 @@
-const cheerio = require('cheerio');
-const fs = require('fs');
-const file = fs.readFileSync('./test-site/index.html','utf8');
-const $ = cheerio.load(file);
+const cheerio = require('cheerio'),
+      fs = require('fs'),
+      file = fs.readFileSync('./test-site/index.html','utf8'),
+      $ = cheerio.load(file),
+      phpReq = require('php-request-generator');
 
 const api = {
-  url:"./anylitics.php",
+  url:"./server.php",
   active:"a",
   hover:"h"
 };
+
+const requests = {
+  name: "requests",
+  get: [api.active,api.hover]
+}
+
+phpReq(requests);
+
 
 var sites = [];
 
