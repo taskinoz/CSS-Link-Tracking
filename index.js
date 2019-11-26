@@ -12,6 +12,7 @@ const api = {
 
 const requests = {
   name: "requests",
+  allRequests: true,
   get: [api.active,api.hover]
 }
 
